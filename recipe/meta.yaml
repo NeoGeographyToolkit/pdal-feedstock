@@ -28,7 +28,12 @@ requirements:
     - c-ares 1.19.1
     - libsqlite 3.42.0
     - mpfr 4.2.0
+    - llvm-openmp 16.0.6
     - nanoflann 1.4.2
+    - networkx 3.1
+    - nss 3.92
+    - rclone 1.63.1
+    - scipy 1.11.2
     - python 3.9.17
     - sqlite 3.42.0
     - zstd 1.5.5
@@ -54,7 +59,12 @@ requirements:
     - c-ares 1.19.1
     - libsqlite 3.42.0
     - mpfr 4.2.0
+    - llvm-openmp 16.0.6
     - nanoflann 1.4.2
+    - networkx 3.1
+    - nss 3.92
+    - rclone 1.63.1
+    - scipy 1.11.2
     - python 3.9.17
     - sqlite 3.42.0
     - zstd 1.5.5
