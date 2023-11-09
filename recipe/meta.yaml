@@ -26,7 +26,7 @@ requirements:
     - geotiff 1.7.1
     - libpq 14.5
     - c-ares 1.19.1
-    - libsqlite 3.42.0
+    - libsqlite 3.43.0
     - mpfr 4.2.0
     - llvm-openmp 16.0.6
     - nanoflann 1.4.2
@@ -34,8 +34,8 @@ requirements:
     - nss 3.92
     - rclone 1.63.1
     - scipy 1.11.2
-    - python 3.9.17
-    - sqlite 3.42.0
+    - python 3.9.15
+    - sqlite 3.43.0
     - zstd 1.5.5
     # - libkml
     - eigen 3.4.0
@@ -57,7 +57,7 @@ requirements:
     - geotiff 1.7.1
     - libpq 14.5
     - c-ares 1.19.1
-    - libsqlite 3.42.0
+    - libsqlite 3.43.0
     - mpfr 4.2.0
     - llvm-openmp 16.0.6
     - nanoflann 1.4.2
@@ -65,8 +65,8 @@ requirements:
     - nss 3.92
     - rclone 1.63.1
     - scipy 1.11.2
-    - python 3.9.17
-    - sqlite 3.42.0
+    - python 3.9.15
+    - sqlite 3.43.0
     - zstd 1.5.5
     # - libkml
     - eigen 3.4.0
