@@ -2,7 +2,7 @@
 
 package:
   name: pdal
-  version: {{ version }}
+  version: {{ version }}_asp3.3.0
 
 source:
   git_url: git@github.com:PDAL/PDAL.git
@@ -24,44 +24,44 @@ requirements:
     - pkg-config
 
   host:
-    - libgdal 3.5_isis8=h3fd9d12_0
-    - geotiff 1.7.1=ha76d385_4
-    - libpq x
+    - libgdal 3.5_isis8
+    - geotiff 1.7.1
+    - libpq 14.5
     - libkml x
-    - eigen x
-    # - nitro x
-    - curl x
-    - zlib x
-    - hdf5 x
+    - eigen 3.4.0
+    # - nitro
+    - curl 7.87.0
+    - zlib 1.2.13
+    - hdf5 1.12.1
     - tiledb x
-    - zstd x
-    - libxml2 x
+    - zstd 1.5.5
+    - libxml2 2.9.14
     # - draco
     # - libxml2
-    - openssl x
+    - openssl 1.1.1v
     # - ceres-solver
     - mkl  # [win]
-    - blas  # [win]
+    - blas  2.117
 
   run:
-    - libgdal 3.5_isis8=h3fd9d12_0
-    - geotiff 1.7.1=ha76d385_4
-    - libpq x
+    - libgdal 3.5_isis8
+    - geotiff 1.7.1
+    - libpq 14.5
     - libkml x
-    - eigen x
-    # - nitro x
-    - curl x
-    - zlib x
-    - hdf5 x
+    - eigen 3.4.0
+    # - nitro
+    - curl 7.87.0
+    - zlib 1.2.13
+    - hdf5 1.12.1
     - tiledb x
-    - zstd x
-    - libxml2 x
+    - zstd 1.5.5
+    - libxml2 2.9.14
     # - draco
     # - libxml2
-    - openssl x
+    - openssl 1.1.1v
     # - ceres-solver
     - mkl  # [win]
-    - blas  # [win]
+    - blas  2.117
 
   run_constrained:   # [osx and x86_64]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
