@@ -25,7 +25,14 @@ requirements:
     - libgdal 3.5_isis8
     - geotiff 1.7.1
     - libpq 14.5
-    #- libkml
+    - c-ares 1.19.1
+    - libsqlite 3.42.0
+    - mpfr 4.2.0
+    - nanoflann 1.4.2
+    - python 3.9.17
+    - sqlite 3.42.0
+    - zstd 1.5.5
+    # - libkml
     - eigen 3.4.0
     # - nitro
     - curl 7.87.0
@@ -44,6 +51,14 @@ requirements:
     - libgdal 3.5_isis8
     - geotiff 1.7.1
     - libpq 14.5
+    - c-ares 1.19.1
+    - libsqlite 3.42.0
+    - mpfr 4.2.0
+    - nanoflann 1.4.2
+    - python 3.9.17
+    - sqlite 3.42.0
+    - zstd 1.5.5
+    # - libkml
     - eigen 3.4.0
     # - nitro
     - curl 7.87.0
