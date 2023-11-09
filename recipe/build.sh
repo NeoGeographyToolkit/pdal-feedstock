@@ -14,6 +14,11 @@ if [ "$(uname)" == "Linux" ]; then
    export PKG_CONFIG_PATH="$PKG_CONFIG_PATH;${PREFIX}/lib64/pkgconfig"
 fi
 
+if [ "$(uname)" = "Darwin" ]; then
+    EXT='.dylib'
+else
+    EXT='.so'
+fi
 
 if [ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]; then
   mkdir native; cd native;
@@ -35,29 +40,49 @@ else
 
 fi
 
+rm -rf build && mkdir build && cd build
 
-rm -rf build && mkdir build &&  cd build
-cmake ${CMAKE_ARGS} \
-  -DBUILD_SHARED_LIBS=ON \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_INSTALL_PREFIX=$PREFIX \
-  -DCMAKE_PREFIX_PATH=$PREFIX \
-  -DDIMBUILDER_EXECUTABLE=$DIMBUILDER \
-  -DBUILD_PLUGIN_I3S=ON \
-  -DBUILD_PLUGIN_TRAJECTORY=ON \
-  -DBUILD_PLUGIN_E57=ON \
-  -DBUILD_PLUGIN_PGPOINTCLOUD=ON \
-  -DBUILD_PLUGIN_ICEBRIDGE=ON \
-  -DBUILD_PLUGIN_NITF=ON \
-  -DBUILD_PLUGIN_TILEDB=ON \
-  -DBUILD_PLUGIN_HDF=ON \
-  -DBUILD_PLUGIN_DRACO=ON \
-  -DENABLE_CTEST=OFF \
-  -DWITH_TESTS=OFF \
-  -DWITH_ZLIB=ON \
-  -DWITH_ZSTD=ON \
-  -DWITH_LASZIP=ON \
-  -DWITH_LAZPERF=ON \
+ldflags="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib -lgeotiff -lcurl -lssl -lxml2 -lcrypto -lzstd -lz"
+
+cmake ${CMAKE_ARGS}                                      \
+  -DBUILD_SHARED_LIBS=ON                                 \
+  -DCMAKE_BUILD_TYPE=Release                             \
+  -DCMAKE_INSTALL_PREFIX=$PREFIX                         \
+  -DCMAKE_PREFIX_PATH=$PREFIX                            \
+  -DDIMBUILDER_EXECUTABLE=$DIMBUILDER                    \
+  -DBUILD_PLUGIN_I3S=OFF                                 \
+  -DBUILD_PLUGIN_TRAJECTORY=OFF                          \
+  -DBUILD_PLUGIN_E57=OFF                                 \
+  -DBUILD_PLUGIN_PGPOINTCLOUD=ON                         \
+  -DBUILD_PLUGIN_ICEBRIDGE=OFF                           \
+  -DBUILD_PLUGIN_NITF=OFF                                \
+  -DBUILD_PLUGIN_TILEDB=ON                               \
+  -DBUILD_PLUGIN_HDF=ON                                  \
+  -DBUILD_PLUGIN_DRACO=OFF                               \
+  -DENABLE_CTEST=OFF                                     \
+  -DWITH_TESTS=OFF                                       \
+  -DWITH_ZLIB=ON                                         \
+  -DWITH_ZSTD=ON                                         \
+  -DWITH_LASZIP=ON                                       \
+  -DWITH_LAZPERF=ON                                      \
+  -DCMAKE_VERBOSE_MAKEFILE=ON                            \
+  -DCMAKE_CXX17_STANDARD_COMPILE_OPTION="-std=c++17"     \
+  -DCMAKE_VERBOSE_MAKEFILE=ON                            \
+  -DWITH_TESTS=OFF                                       \
+  -DCMAKE_EXE_LINKER_FLAGS="$ldflags"                    \
+  -DDIMBUILDER_EXECUTABLE=dimbuilder                     \
+  -DBUILD_PLUGIN_DRACO:BOOL=OFF                          \
+  -DOPENSSL_ROOT_DIR=${PREFIX}                           \
+  -DLIBXML2_INCLUDE_DIR=${PREFIX}/include/libxml2        \
+  -DLIBXML2_LIBRARIES=${PREFIX}/lib/libxml2${EXT}        \
+  -DLIBXML2_XMLLINT_EXECUTABLE=${PREFIX}/bin/xmllint     \
+  -DGDAL_LIBRARY=${PREFIX}/lib/libgdal${EXT}             \
+  -DGDAL_CONFIG=${PREFIX}/bin/gdal-config                \
+  -DZLIB_INCLUDE_DIR:PATH=${PREFIX}/include              \
+  -DZLIB_LIBRARY:FILEPATH=${PREFIX}/lib/libz${EXT}       \
+  -DCURL_INCLUDE_DIR=${PREFIX}/include                   \
+  -DPostgreSQL_LIBRARY_RELEASE=${PREFIX}/lib/libpq${EXT} \
+  -DCURL_LIBRARY_RELEASE=${PREFIX}/lib/libcurl${EXT}     \
   ..
 
 make -j $CPU_COUNT ${VERBOSE_CM}

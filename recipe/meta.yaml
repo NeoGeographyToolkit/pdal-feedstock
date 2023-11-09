@@ -5,10 +5,8 @@ package:
   version: {{ version }}_asp3.3.0
 
 source:
-  git_url: git@github.com:PDAL/PDAL.git
-  git_tag: {{ version }}
-  # url: https://github.com/PDAL/PDAL/releases/download/{{ version }}/PDAL-{{ version }}-src.tar.bz2
-  # sha256: ec50e60544673a72f4300d90df1e70f1cd28055780b789319185590b63e3f688
+  git_url: git@github.com:NeoGeographyToolkit/PDAL.git
+  git_tag: {{ version }}_fix
 
 build:
   number: 0
@@ -27,17 +25,16 @@ requirements:
     - libgdal 3.5_isis8
     - geotiff 1.7.1
     - libpq 14.5
-    - libkml x
+    #- libkml
     - eigen 3.4.0
     # - nitro
     - curl 7.87.0
     - zlib 1.2.13
     - hdf5 1.12.1
-    - tiledb x
+    - tiledb 2.9.5
     - zstd 1.5.5
     - libxml2 2.9.14
     # - draco
-    # - libxml2
     - openssl 1.1.1v
     # - ceres-solver
     - mkl  # [win]
@@ -47,17 +44,15 @@ requirements:
     - libgdal 3.5_isis8
     - geotiff 1.7.1
     - libpq 14.5
-    - libkml x
     - eigen 3.4.0
     # - nitro
     - curl 7.87.0
     - zlib 1.2.13
     - hdf5 1.12.1
-    - tiledb x
+    - tiledb 2.9.5
     - zstd 1.5.5
     - libxml2 2.9.14
     # - draco
-    # - libxml2
     - openssl 1.1.1v
     # - ceres-solver
     - mkl  # [win]
