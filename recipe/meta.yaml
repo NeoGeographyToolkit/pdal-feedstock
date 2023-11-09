@@ -1,12 +1,14 @@
-{% set version = "2.6.0" %}
+{% set version = "2.4.2" %}
 
 package:
   name: pdal
   version: {{ version }}
 
 source:
-  url: https://github.com/PDAL/PDAL/releases/download/{{ version }}/PDAL-{{ version }}-src.tar.bz2
-  sha256: ec50e60544673a72f4300d90df1e70f1cd28055780b789319185590b63e3f688
+  git_url: git@github.com:PDAL/PDAL.git
+  git_tag: {{ version }}
+  # url: https://github.com/PDAL/PDAL/releases/download/{{ version }}/PDAL-{{ version }}-src.tar.bz2
+  # sha256: ec50e60544673a72f4300d90df1e70f1cd28055780b789319185590b63e3f688
 
 build:
   number: 0
@@ -22,40 +24,42 @@ requirements:
     - pkg-config
 
   host:
-    - libgdal
-    - geotiff
-    - libpq
-    - libkml
-    - eigen
-    - nitro
-    - curl
-    - zlib
-    - hdf5
-    - tiledb
-    - zstd
-    - libxml2
-    - draco
-    - openssl
-    - ceres-solver
+    - libgdal 3.5_isis8=h3fd9d12_0
+    - geotiff 1.7.1=ha76d385_4
+    - libpq x
+    - libkml x
+    - eigen x
+    # - nitro x
+    - curl x
+    - zlib x
+    - hdf5 x
+    - tiledb x
+    - zstd x
+    - libxml2 x
+    # - draco
+    # - libxml2
+    - openssl x
+    # - ceres-solver
     - mkl  # [win]
     - blas  # [win]
 
   run:
-    - libgdal
-    - geotiff
-    - libpq
-    - libkml
-    - eigen
-    - nitro
-    - curl
-    - zlib
-    - hdf5
-    - tiledb
-    - zstd
-    - libxml2
-    - draco
-    - openssl
-    - ceres-solver
+    - libgdal 3.5_isis8=h3fd9d12_0
+    - geotiff 1.7.1=ha76d385_4
+    - libpq x
+    - libkml x
+    - eigen x
+    # - nitro x
+    - curl x
+    - zlib x
+    - hdf5 x
+    - tiledb x
+    - zstd x
+    - libxml2 x
+    # - draco
+    # - libxml2
+    - openssl x
+    # - ceres-solver
     - mkl  # [win]
     - blas  # [win]
 
