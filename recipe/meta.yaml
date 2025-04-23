@@ -17,7 +17,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
-    - cmake 3.15
+    - cmake 3.20
     - make
     - pkg-config
 
