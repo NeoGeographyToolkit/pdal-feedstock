@@ -44,6 +44,8 @@ rm -rf build && mkdir build && cd build
 
 ldflags="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib -lgeotiff -lcurl -lssl -lxml2 -lcrypto -lzstd -lz"
 
+# Use BUILD_PLUGIN_TRAJECTORY:BOOL=OFF so we don't have to use CERES
+
 cmake ${CMAKE_ARGS}                                      \
   -DBUILD_SHARED_LIBS=ON                                 \
   -DCMAKE_BUILD_TYPE=Release                             \
@@ -83,6 +85,8 @@ cmake ${CMAKE_ARGS}                                      \
   -DCURL_INCLUDE_DIR=${PREFIX}/include                   \
   -DPostgreSQL_LIBRARY_RELEASE=${PREFIX}/lib/libpq${EXT} \
   -DCURL_LIBRARY_RELEASE=${PREFIX}/lib/libcurl${EXT}     \
+  -DPROJ_INCLUDE_DIR:PATH=${PREFIX}/include              \
+  -DPROJ_LIBRARY:FILEPATH=${PREFIX}/lib/libproj.so       \
   ..
 
 make -j $CPU_COUNT ${VERBOSE_CM}
