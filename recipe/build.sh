@@ -86,7 +86,7 @@ cmake ${CMAKE_ARGS}                                      \
   -DPostgreSQL_LIBRARY_RELEASE=${PREFIX}/lib/libpq${EXT} \
   -DCURL_LIBRARY_RELEASE=${PREFIX}/lib/libcurl${EXT}     \
   -DPROJ_INCLUDE_DIR:PATH=${PREFIX}/include              \
-  -DPROJ_LIBRARY:FILEPATH=${PREFIX}/lib/libproj.so       \
+  -DPROJ_LIBRARY:FILEPATH=${PREFIX}/lib/libproj${EXT}    \
   ..
 
 make -j $CPU_COUNT ${VERBOSE_CM}
