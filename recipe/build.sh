@@ -44,8 +44,8 @@ if [ "$(uname)" = "Darwin" ]; then
     cc_comp=clang
     cxx_comp=clang++
 else
-    cc_comp=gcc
-    cxx_comp=g++
+    cc_comp=x86_64-conda-linux-gnu-gcc
+    cxx_comp=x86_64-conda-linux-gnu-c++
 fi
 
 rm -rf build && mkdir build && cd build
@@ -119,6 +119,10 @@ cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/pdal-deactivate.sh
 dir=$(pwd) 
 cd $PREFIX/lib
 /bin/rm -f libpdalcpp${EXT}
-ln -s $(ls libpdalcpp${EXT}.[0-9][0-9].* | head -n 1) libpdalcpp${EXT}
+if [ "$(uname)" = "Darwin" ]; then
+  ln -s $(ls libpdalcpp.[0-9][0-9].*${EXT} | head -n 1) libpdalcpp${EXT}
+else
+  ln -s $(ls libpdalcpp${EXT}.[0-9][0-9].* | head -n 1) libpdalcpp${EXT}
+fi
 cd $dir
 
