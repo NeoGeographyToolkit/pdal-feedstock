@@ -16,13 +16,18 @@ build:
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
+    # - {{ compiler('cxx') }}
+    # - {{ compiler('c') }}
     - cmake 3.27.9
     - make
     - pkg-config
 
   host:
+    # Having compilers in the host section helps sort out issues before conda-build
+    - clang >=16,<17         # ['osx']
+    - clangxx >=16,<17       # ['osx']
+    - gcc_linux-64 >=11,<12  # [linux]
+    - gxx_linux-64 >=11,<12  # [linux]
     - libgdal 3.7.1
     - geotiff 1.7.1
     - libpq 15.4
