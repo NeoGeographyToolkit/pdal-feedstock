@@ -102,3 +102,11 @@ mkdir -p $DEACTIVATE_DIR
 
 cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/pdal-activate.sh
 cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/pdal-deactivate.sh
+
+# Bugfix for libpdalcpp${EXT} not being a symlink
+dir=$(pwd) 
+cd $PREFIX/lib
+/bin/rm -f libpdalcpp${EXT}
+ln -s $(ls libpdalcpp${EXT}.[0-9][0-9]* | head -n 1) libpdalcpp${EXT}
+cd $dir
+
