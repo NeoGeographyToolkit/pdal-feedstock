@@ -40,8 +40,7 @@ else
 
 fi
 
-isMac=$(uname -s | grep Darwin)
-if [ "$isMac" != "" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     cc_comp=clang
     cxx_comp=clang++
 else
