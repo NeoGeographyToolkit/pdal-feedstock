@@ -40,13 +40,13 @@ else
 
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
-    cc_comp=clang
-    cxx_comp=clang++
-else
-    cc_comp=x86_64-conda-linux-gnu-gcc
-    cxx_comp=x86_64-conda-linux-gnu-c++
-fi
+# if [ "$(uname)" = "Darwin" ]; then
+#     cc_comp=clang
+#     cxx_comp=clang++
+# else
+#     cc_comp=x86_64-conda-linux-gnu-gcc
+#     cxx_comp=x86_64-conda-linux-gnu-c++
+# fi
 
 rm -rf build && mkdir build && cd build
 
@@ -55,9 +55,10 @@ ldflags="-Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib -lgeotiff -lcurl -lssl -lxml2 
 # Use BUILD_PLUGIN_TRAJECTORY:BOOL=OFF so we don't have to use CERES
 
 # Enforce a compiler we know to work
+#  -DCMAKE_C_COMPILER=${PREFIX}/bin/$cc_comp              \
+#  -DCMAKE_CXX_COMPILER=${PREFIX}/bin/$cxx_comp           \
+
 cmake ${CMAKE_ARGS}                                      \
-  -DCMAKE_C_COMPILER=${PREFIX}/bin/$cc_comp              \
-  -DCMAKE_CXX_COMPILER=${PREFIX}/bin/$cxx_comp           \
   -DBUILD_SHARED_LIBS=ON                                 \
   -DCMAKE_BUILD_TYPE=Release                             \
   -DCMAKE_INSTALL_PREFIX=$PREFIX                         \

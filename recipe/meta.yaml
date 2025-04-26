@@ -19,14 +19,12 @@ requirements:
     - cmake 3.27.9
     - make
     - pkg-config
-
-  host:
-  # Having compilers as part of dependencies as in the local env helps
-  # sort out issues with conda-build and ISIS compatibility.
     - c-compiler                1.9.0
     - compilers                 1.9.0
     - cxx-compiler              1.9.0
     - fortran-compiler          1.9.0
+
+  host:
     - libgdal 3.7.1
     - geotiff 1.7.1
     - libpq 15.4
